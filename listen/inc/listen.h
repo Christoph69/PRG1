@@ -32,7 +32,9 @@ struct List {
   PLager last;
 };
 
+///////////////////////////////////////
 // Funktionen für den Umgang mit Listen
+///////////////////////////////////////
 
 // Initialisierung der Liste, first und last Pointer werden auf nullptr
 void initializeList(List *);
@@ -46,7 +48,23 @@ bool insert0(List *,
 bool insertLast(List *,
                 Artikel);
 
+// Einfügen nach bestimmt Position, diese muss der Funktion als dritten
+// Parameter übergeben werden
+bool insertPos(List *, Artikel, unsigned int);
+
+// Entfernenfunktionen
+// Entfernen am Anfang
+bool remove0(List *);
+
+// Entfernen an einer bestimmten Position, diese muss als zweiter Parameter mit
+// übergeben werden.
+bool removePos(List *,
+               unsigned int);
+
+//////////////////////////////
 // Funktion für struct Artikel
+//////////////////////////////
+
 // Eingabe der Werte für Artikel
 Artikel insertArtikel();
 

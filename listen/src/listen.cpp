@@ -8,7 +8,10 @@ void initializeList(List *list) {
   list->last  = nullptr;
 }
 
+////////////////////
 // Einfügefunktionen
+////////////////////
+
 bool insert0(List *list, Artikel artikel) {
   // Speicherplatz für neuen Artikel reservieren
   PLager pLager  = new Lager;
@@ -56,7 +59,7 @@ bool insertPos(List *list, Artikel artikel, unsigned int pos) {
   PLager speicher = list->first;
   bool   gueltig  = pLager != nullptr;
 
-  for (int i = 0; i < pos; i++) {
+  for (int i = 0; i < pos - 1; i++) {
     if (speicher != nullptr) {
       speicher = speicher->succ;
     }
@@ -71,7 +74,39 @@ bool insertPos(List *list, Artikel artikel, unsigned int pos) {
   return gueltig;
 }
 
+//////////////////////
+// Entfernenfunktionen
+//////////////////////
+
+bool remove0(List *list) {
+  bool gueltig = list->first != nullptr;
+
+  if (gueltig) {
+    PLager freigabe = list->first;
+    list->first = freigabe->succ;
+    delete freigabe;
+  }
+  return gueltig;
+}
+
+bool removePos(List *list, unsigned int pos) {
+  bool   gueltig  = list->first != nullptr;
+  PLager speicher = list->first;
+
+  for (int i = 0; i < pos - 1; i++) {
+    if (speicher != nullptr) speicher = speicher->succ;
+    else gueltig = false;
+  }
+  PLager freigabe = speicher;
+  speicher->succ = freigabe->succ->succ;
+  delete freigabe;
+  return gueltig;
+}
+
+//////////////////////////////
 // Funktion für struct Artikel
+//////////////////////////////
+
 // Eingabe
 Artikel insertArtikel() {
   Artikel artikel;
