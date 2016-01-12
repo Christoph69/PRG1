@@ -10,8 +10,13 @@ int main(int argc, char const *argv[]) {
   std::cout << "Ausgabe last: " << tegut.last << std::endl;
 
   for (int i = 0; i < 3; i++) {
-    std::cout << "i ==== " << i << std::endl;
+    insert0(&tegut, insertArtikel());
+    std::cout << "Ausgabe first: " << tegut.first << std::endl;
+    std::cout << "Ausgabe last: " << tegut.last << std::endl;
   }
+
+  outputList(&tegut);
+
 
   return 0;
 }

@@ -1,5 +1,6 @@
 // listen.cpp
 #include "../inc/listen.h"
+#include <iostream>
 
 // Initialisierung der Liste
 void initializeList(List *list) {
@@ -23,6 +24,8 @@ bool insert0(List *list, Artikel artikel) {
     // dem Listenanker das neue Glied als Anfang zuweisen
     list->first = pLager;
   }
+
+  if (list->last == nullptr) list->last = pLager;
   return gueltig;
 }
 
@@ -66,4 +69,35 @@ bool insertPos(List *list, Artikel artikel, unsigned int pos) {
     speicher->succ  = pLager;
   }
   return gueltig;
+}
+
+// Funktion für struct Artikel
+// Eingabe
+Artikel insertArtikel() {
+  Artikel artikel;
+  std::cout << "Eingabe Artikelnummer: ";
+  std::cin >> artikel.artikelnummer;
+  std::cout << "Eingabe Artikelname: ";
+  std::cin >> artikel.name;
+  std::cout << "Eingabe Artikelpreis: ";
+  std::cin >> artikel.PreisInCent;
+  std::cout << std::endl;
+
+  return artikel;
+}
+
+// Ausgabe
+void outputList(List *list) {
+  PLager speicher = list->first;
+
+  if (list->first != nullptr) {
+    do {
+      std::cout << "Artikelnummer: " << speicher->artikel.artikelnummer <<
+        std::endl;
+      std::cout << "Artikelname  : " << speicher->artikel.name << std::endl;
+      std::cout << "Artikelpreis : " << speicher->artikel.PreisInCent <<
+        std::endl << std::endl;
+      speicher = speicher->succ;
+    } while (speicher != nullptr);
+  }
 }

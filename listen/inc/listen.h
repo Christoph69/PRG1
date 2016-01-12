@@ -39,7 +39,16 @@ void initializeList(List *);
 
 // Einfügefunktionen
 // Einfügen eines Elements am Anfang der Liste
-bool insert0(List *, Artikel);
+bool insert0(List *,
+             Artikel);
 
 // Einfügen am Ende
-bool insertLast(List *, Artikel);
+bool insertLast(List *,
+                Artikel);
+
+// Funktion für struct Artikel
+// Eingabe der Werte für Artikel
+Artikel insertArtikel();
+
+// Ausgabe eines Artikels
+void    outputList(List *);
