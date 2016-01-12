@@ -34,6 +34,12 @@ struct List {
 
 // Funktionen für den Umgang mit Listen
 
+// Initialisierung der Liste, first und last Pointer werden auf nullptr
+void initializeList(List *);
+
 // Einfügefunktionen
 // Einfügen eines Elements am Anfang der Liste
-bool insert0(PLager *, Artikel);
+bool insert0(List *, Artikel);
+
+// Einfügen am Ende
+bool insertLast(List *, Artikel);
