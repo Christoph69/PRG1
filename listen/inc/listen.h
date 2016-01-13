@@ -1,4 +1,6 @@
 // listen.h am Beispiel einer Lagerverwaltung
+#ifndef LISTEN_H
+#define LISTEN_H
 
 // Konstanten
 const int MAX_NAMENSLAENGE = 40;
@@ -22,6 +24,7 @@ struct Lager;
 // Definition für meinen Pointer der immer auf das nächste GLied zeigt
 typedef Lager *PLager;
 
+// Baustein der Liste
 struct Lager {
   Artikel artikel;
   PLager  succ; // Successor ( = Nachfolger)
@@ -41,7 +44,8 @@ void initializeList(List *);
 
 // Einfügefunktionen
 // Einfügen eines Elements am Anfang der Liste
-bool insert0(List *,
+bool insert0(List *, // als Referenz kann dann bei der Funktionseingabe das
+                     // Kaufmannsund weggelassen werden
              Artikel);
 
 // Einfügen am Ende
@@ -50,11 +54,13 @@ bool insertLast(List *,
 
 // Einfügen nach bestimmt Position, diese muss der Funktion als dritten
 // Parameter übergeben werden
-bool insertPos(List *, Artikel, unsigned int);
+bool insertPos(List *,
+               Artikel,
+               unsigned int);
 
 // Entfernenfunktionen
 // Entfernen am Anfang
-bool remove0(List *);
+bool remove0(List *); // am besten Artikel zurückgeben um damit zu arbieten
 
 // Entfernen an einer bestimmten Position, diese muss als zweiter Parameter mit
 // übergeben werden.
@@ -70,3 +76,5 @@ Artikel insertArtikel();
 
 // Ausgabe eines Artikels
 void    outputList(List *);
+
+#endif /* LISTEN_H */

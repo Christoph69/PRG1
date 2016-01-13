@@ -45,6 +45,7 @@ bool insertLast(List *list, Artikel artikel) {
     pLager->succ = nullptr;
 
     // Pointer der nun vorletzten Elements auf das Letzte Element zeigen lassen
+    // Prüfung die Liste last != nullptr
     list->last->succ = pLager;
 
     // den last-Pointer nun auf das neue letzte Element zeigen lassen
