@@ -25,6 +25,7 @@ bool insert0(List *list, Artikel artikel) {
     pLager->succ = list->first;
 
     // dem Listenanker das neue Glied als Anfang zuweisen
+    if (list->last == nullptr) list->last = pLager;
     list->first = pLager;
   }
 
@@ -126,6 +127,7 @@ Artikel insertArtikel() {
 void outputList(List *list) {
   PLager speicher = list->first;
 
+  // if einsparen indem man eine while, schleife benutzt!!!
   if (list->first != nullptr) {
     do {
       std::cout << "Artikelnummer: " << speicher->artikel.artikelnummer <<
